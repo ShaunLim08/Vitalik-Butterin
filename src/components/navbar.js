@@ -65,7 +65,7 @@ const Navbar = () => {
                 className="px-3 py-2 rounded-md text-sm font-medium bg-black text-white"
                 onClick={logout}
               >
-                {name + formatAddress(user.wallet.address)}
+                {name + formatAddress(user?.wallet?.address)}
               </button>
             ) : (
               <button
