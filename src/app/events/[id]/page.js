@@ -83,7 +83,7 @@ export default function EventDetails() {
               <span className="ml-2">{event.date}, {event.time}</span>
             </div>
             <button className="w-full sm:w-auto bg-yellow-600 text-white px-6 py-2 rounded-full hover:bg-yellow-700 transition" onClick={() =>stakeEvent(event.id, walletAddress, 10.00)}>
-              Register Now
+              Stake & Register Now
             </button>
           </div>
         </div>
