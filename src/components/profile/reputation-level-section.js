@@ -32,7 +32,7 @@ const ReputationSmallSection = ({ level, points, badges }) => {
 
 const ReputationSection = () => {
   const userReputation = {
-    level: 1,
+    level: 2,
     points: 50,
     badges: [
       { name: 'First Post', icon: '📝', earned: true },
