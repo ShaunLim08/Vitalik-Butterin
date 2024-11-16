@@ -12,7 +12,7 @@ export async function POST(req) {
         Authorization: 'Bearer ' + process.env.HYPERBOLIC_API_KEY,
       },
       body: JSON.stringify({
-        model: 'meta-llama/Llama-3.2-3B-Instruct',
+        model: 'meta-llama/Meta-Llama-3-70B-Instruct',
         messages: [
           {
             role: 'system',
