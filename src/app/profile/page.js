@@ -3,7 +3,7 @@
 import WorldIdWidget from "@/components/profile/world-id";
 import MainProfileSection from "@/components/profile/main-profile";
 import ReputationSection from "@/components/profile/reputation-level-section";
-import LevelingSystem from "@/components/profile/leveling-system";
+import LevelingSystem from "@/components/profile/leveling-system.jsx";
 import { useState } from "react";
 import ENSSelection from "@/components/profile/ens-section";
 import Web3InterestsSection from "@/components/profile/interest-selection";
