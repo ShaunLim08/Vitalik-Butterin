@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import LevelingSystem from "@/components/profile/leveling-system";
 
 import { usersList } from '@/providers/profile-provider';
 import { eventsList } from '@/providers/event-providers';

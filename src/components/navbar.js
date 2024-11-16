@@ -1,10 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Link from "next/link";
 import { useLogout, usePrivy } from "@privy-io/react-auth";
 import { useAccount, useEnsName } from "wagmi";
 import Image from "next/image";
+import * as fcl from "@onflow/fcl";
+
+async function getWalletAddress() {
+  try {
+    const user = await fcl.authenticate();
+    return user.addr;
+  } catch (error) {
+    console.error("Error fetching wallet address:", error);
+  }
+}
 
 const Navbar = () => {
   const { ready, authenticated, login, user } = usePrivy();
@@ -13,6 +23,15 @@ const Navbar = () => {
   const { address } = useAccount();
   const { data: name } = useEnsName({ address });
   const [isOpen, setIsOpen] = useState(false);
+  const [walletAddress, setWalletAddress] = useState(null);
+
+  useEffect(() => {
+    async function fetchWalletAddress() {
+      const address = await getWalletAddress();
+      setWalletAddress(address);
+    }
+    fetchWalletAddress();
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -54,10 +73,18 @@ const Navbar = () => {
                 disabled={disableLogin}
                 onClick={login}
               >
-                Connect
+                Connect Privy
               </button>
             )}
+            <button
+                className="px-3 py-2 rounded-md text-sm font-medium bg-green-500 text-white"
+                disabled={disableLogin}
+                onClick={getWalletAddress}
+              >
+                {walletAddress? walletAddress:"Connect Flow"}
+              </button>
           </div>
+
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} type="button" className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
               <span className="sr-only">Open main menu</span>

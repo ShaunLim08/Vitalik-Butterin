@@ -13,9 +13,6 @@ export async function getEventById(id) {
       `,
       args: (arg, t) => [arg(id, t.UInt64)] // Example eventId
     });
-  
-    console.log(result);
-    console.log(id);
   }
 export async function getAllEvents() {
     const result = await fcl.query({

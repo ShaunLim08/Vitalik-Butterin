@@ -4,12 +4,26 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { usePrivy } from '@privy-io/react-auth';
+import { FaCheck } from 'react-icons/fa';
 
+const formatAddress = (addr) => {
+  return `${addr?.substring(0, 4)}...${addr?.substring(addr.length - 4)}`;
+};
+  
 export default function Home({ levels, level }) {
   const [svgData, setSvgData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
-  const { user } = usePrivy();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("worldId")) {
+        setUser(localStorage.getItem("worldId"));
+      }
+    }
+  }, []);
+  // const { user } = usePrivy();
 
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
@@ -73,7 +87,10 @@ export default function Home({ levels, level }) {
             </motion.div>
 
             <div>
-                <h2 className="text-2xl font-semibold">{user?.address ? user.address : "Not authenticated"}</h2>
+                <h2 className="text-2xl font-semibold flex items-center">
+                    {user?  formatAddress(user) : "Not authenticated"}
+                    {user && <FaCheck className="ml-2 text-green-500" />}
+                </h2>
                 <p className="text-black-600">Level 1</p>
             </div>
         </div>

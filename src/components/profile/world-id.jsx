@@ -5,9 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import { IDKitWidget, VerificationLevel } from "@worldcoin/idkit";
 import Image from "next/image";
 
-const formatAddress = (addr) => {
-  return `${addr?.substring(0, 8)}...`;
-};
+
 
 export default function Navbar() {
   const [worldId, setWorldId] = useState("");
@@ -47,15 +45,6 @@ export default function Navbar() {
       },
       body: JSON.stringify(proof),
     });
-    if (response.ok) {
-      console.log("Success");
-      // const { verified } = await response.json();
-      // return verified;
-    } else {
-      console.log("Verified fail");
-      // const { code, detail } = await response.json();
-      // throw new Error(`Error Code ${code}: ${detail}`);
-    }
   };
 
   return (
