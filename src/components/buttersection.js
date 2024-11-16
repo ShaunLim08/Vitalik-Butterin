@@ -8,15 +8,8 @@ import styles from "./buttersection.module.css";
 const ButterSection = ({ children }) => {
   useEffect(() => {
     let interval;
-    const startTime = Date.now();
 
     function createButter() {
-      const currentTime = Date.now();
-      if (currentTime - startTime > 6000) {
-        clearInterval(interval);
-        return;
-      }
-
       const butter = document.createElement("div");
       butter.classList.add(styles.butter);
       butter.style.left = `${Math.random() * 100}vw`;
