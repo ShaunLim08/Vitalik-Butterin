@@ -29,7 +29,7 @@ const ButterSection = ({ children }) => {
       }, 10000);
     }
 
-    interval = setInterval(createButter, 300);
+    interval = setInterval(createButter, 200);
 
     return () => clearInterval(interval);
   }, []);
