@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {createProfile, getProfile, addFollowers} from '../../app/api/profilestorage/route.js'
+import {createProfile} from '../../app/api/profilestorage/route.js'
 import * as fcl from "@onflow/fcl";
 import "../../../cadence/config.js";
 
@@ -12,13 +12,22 @@ async function getWalletAddress() {
   }
 }
 
-const Web3InterestsSection = () => {
+const Web3InterestsSection = (sharedData) => {
   const [interests, setInterests] = useState({
     eventtypes: [],
     topics: [],
     companies: [],
     jobpositions: [],
   });
+
+  const getAllInterests = () => {
+    return [
+      ...interests.eventtypes,
+      ...interests.topics,
+      ...interests.companies,
+      ...interests.jobpositions,
+    ];
+  };
 
   const [isSaved, setIsSaved] = useState(false);
 
@@ -131,7 +140,7 @@ const Web3InterestsSection = () => {
   
       <button
         className="mt-6 w-full px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition-colors"
-        onClick={()=>createProfile(walletAddress,"testing", ["test", "idk"])}
+        onClick={()=>createProfile(walletAddress,sharedData.sharedData, getAllInterests())}
       >
         Save
       </button>

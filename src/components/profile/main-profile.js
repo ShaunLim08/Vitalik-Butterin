@@ -5,15 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { usePrivy } from '@privy-io/react-auth';
 import { FaCheck } from 'react-icons/fa';
+import { FaPen } from 'react-icons/fa';
 
 const formatAddress = (addr) => {
   return `${addr?.substring(0, 4)}...${addr?.substring(addr.length - 4)}`;
 };
   
-export default function Home({ levels, level }) {
+export default function Home({ levels, level, setSharedData }) {
   const [svgData, setSvgData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [username, setUsername] = useState(null);
 
 
   useEffect(() => {
@@ -87,12 +89,23 @@ export default function Home({ levels, level }) {
             </motion.div>
 
             <div>
+                <input
+                    type="text"
+                    value={username || ""}
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                        setSharedData(e.target.value);
+                    }}
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                />
                 <h2 className="text-2xl font-semibold flex items-center">
-                    {user?  formatAddress(user) : "Not authenticated"}
+                    {user ? formatAddress(user) : "Not authenticated"}
                     {user && <FaCheck className="ml-2 text-green-500" />}
                 </h2>
                 <p className="text-black-600">Level 1</p>
             </div>
+        <div className="relative mb-4"></div>
+          
         </div>
         <div className={`${isLargeScreen ? 'flex justify-around' : 'grid grid-cols-3 gap-4'} mb-4`}>
             <motion.div className="text-center" whileHover={{ scale: 1.05 }}>

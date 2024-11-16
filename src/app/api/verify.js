@@ -2,7 +2,7 @@ import { verifyCloudProof } from '@worldcoin/idkit';
 
 import { NextResponse } from 'next/server';
 
-export async function POST(req) {
+export default async function POST(req) {
   const { proof, signal } = req.body
     const app_id = process.env.NEXT_PUBLIC_WORLDCOIN_APP_ID
     const action = process.env.NEXT_PUBLIC_WORLDCOIN_ACTION_ID

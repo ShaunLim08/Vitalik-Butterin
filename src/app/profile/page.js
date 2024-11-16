@@ -18,13 +18,14 @@ export default function Profile({ children }) {
     ];
 
     const [currentLevel, setCurrentLevel] = useState(2);
+    const [sharedData, setSharedData] = useState(""); // State to be shared
 
     return (
         <div className="p-4 pt-16 bg-yellow-50 min-h-screen">
             <div className="max-w-7xl mx-auto space-y-4">
                 {/* Main Profile Card */}
                 <div className="bg-white rounded-lg shadow-sm p-6">
-                    <MainProfileSection levels={levels} level={currentLevel} />
+                    <MainProfileSection levels={levels} level={currentLevel} setSharedData={setSharedData} />
                 </div>
 
                 {/* Left Column: Authentication, ENS, Reputation, Interests */}
@@ -40,7 +41,7 @@ export default function Profile({ children }) {
                             <ReputationSection />
                         </div>
                         <div className="bg-white rounded-lg shadow-sm p-6">
-                            <Web3InterestsSection />
+                            <Web3InterestsSection sharedData={sharedData} />
                         </div>
                     </div>
                     
@@ -49,9 +50,7 @@ export default function Profile({ children }) {
                         <LevelingSystem levels={levels} />
                     </div>
                 </div>
-
-                
             </div>
         </div>
     );
-}  
+}
