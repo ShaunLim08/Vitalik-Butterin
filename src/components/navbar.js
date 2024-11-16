@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
             <div className="flex-shrink-0">
-              <Image className="h-8 w-8" width={150} height={60} src="/butter.svg" alt="Logo" />
+              <Image className="h-8 w-8" width={150} height={60} src="/butterlogo.png" alt="Logo" />
             </div>
           </Link>
           <div className="hidden md:flex items-center space-x-4">
