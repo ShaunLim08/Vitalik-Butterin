@@ -47,6 +47,7 @@ export async function getProfile(userAddress) {
     });
 
     console.log("Profile:", profile);
+    return profile;
   } catch (error) {
     console.error("Error retrieving profile:", error);
   }

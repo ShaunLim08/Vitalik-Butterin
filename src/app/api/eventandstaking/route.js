@@ -26,7 +26,6 @@ export async function getAllEvents() {
       `
     });
   
-    console.log(result);
   }
 
   export async function stakeEvent(eventId, userAddress, stakeAmount) {
@@ -59,7 +58,6 @@ export async function getAllEvents() {
     });
   
     const result = await fcl.tx(transactionId).onceSealed();
-    console.log("Transaction Result:", result);
   }
   
 
@@ -89,5 +87,4 @@ const transactionId = await fcl.mutate({
 });
 
 const result = await fcl.tx(transactionId).onceSealed();
-console.log("Transaction Result:", result);
 }

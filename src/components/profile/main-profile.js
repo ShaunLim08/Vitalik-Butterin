@@ -6,17 +6,30 @@ import Image from 'next/image';
 import { usePrivy } from '@privy-io/react-auth';
 import { FaCheck } from 'react-icons/fa';
 import { FaPen } from 'react-icons/fa';
+import { getProfile } from '../../app/api/profilestorage/route.js';
+import * as fcl from "@onflow/fcl";
+import "../../../cadence/config.js";
+
+async function getWalletAddress() {
+  try {
+    const user = await fcl.authenticate();
+    return user.addr;
+  } catch (error) {
+    console.error("Error fetching wallet address:", error);
+  }
+}
 
 const formatAddress = (addr) => {
   return `${addr?.substring(0, 4)}...${addr?.substring(addr.length - 4)}`;
 };
-  
+
 export default function Home({ levels, level, setSharedData }) {
   const [svgData, setSvgData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null);
-
+  const [walletAddress, setWalletAddress] = useState(null);
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -24,8 +37,18 @@ export default function Home({ levels, level, setSharedData }) {
         setUser(localStorage.getItem("worldId"));
       }
     }
+    async function fetchWalletAddress() {
+      const address = await getWalletAddress();
+      setWalletAddress(address);
+      if (address) {
+        const profileData = await getProfile(address);
+        setProfile(profileData);
+        setUsername(profileData.name);
+      }
+    }
+    fetchWalletAddress();
+    console.log("profile", profile);
   }, []);
-  // const { user } = usePrivy();
 
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
