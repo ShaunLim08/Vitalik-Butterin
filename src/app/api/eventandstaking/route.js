@@ -87,4 +87,6 @@ const transactionId = await fcl.mutate({
 });
 
 const result = await fcl.tx(transactionId).onceSealed();
+
+console.log(result);
 }

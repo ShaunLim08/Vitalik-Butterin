@@ -47,7 +47,6 @@ export default function Home({ levels, level, setSharedData }) {
       }
     }
     fetchWalletAddress();
-    console.log("profile", profile);
   }, []);
 
   const [isLargeScreen, setIsLargeScreen] = useState(false);

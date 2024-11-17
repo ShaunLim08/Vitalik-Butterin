@@ -19,20 +19,21 @@ export default function Profile({ children }) {
 
     const [currentLevel, setCurrentLevel] = useState(2);
     const [sharedData, setSharedData] = useState(""); // State to be shared
+    const [WorldUserId, setWorldUserId] = useState(null);
 
     return (
         <div className="p-4 pt-16 bg-yellow-50 min-h-screen">
             <div className="max-w-7xl mx-auto space-y-4">
                 {/* Main Profile Card */}
                 <div className="bg-white rounded-lg shadow-sm p-6">
-                    <MainProfileSection levels={levels} level={currentLevel} setSharedData={setSharedData} />
+                    <MainProfileSection levels={levels} level={currentLevel} setSharedData={setSharedData} WorldUserId={WorldUserId} />
                 </div>
 
                 {/* Left Column: Authentication, ENS, Reputation, Interests */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="md:col-span-2 space-y-4">
                         <div className="bg-white rounded-lg shadow-sm p-6">
-                            <WorldIdWidget />
+                            <WorldIdWidget setWorldUserId={setWorldUserId} />
                         </div>
                         <div className="bg-white rounded-lg shadow-sm p-6">
                             <ENSSelection />
