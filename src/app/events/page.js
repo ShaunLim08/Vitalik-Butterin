@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import EventSection from '@/components/events/event-section';
+import {EventSection} from '@/components/events/event-section';
 import {createEvent} from '../../app/api/eventandstaking/route.js'
-
 
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center w-full py-20">
@@ -57,6 +56,12 @@ https://lu.ma/okyl4g9s`;
       console.error('Failed to copy text: ', err);
     }
   };
+
+  const handleSubmit = () =>{
+    createEvent("some random event i guess", 10.00, "0x8c368d8f37d2e717")
+  }
+  
+  
 
   return (
     <div className="bg-yellow-50 p-8 z-0 -mt-20 pt-24 text-black">
@@ -156,7 +161,7 @@ https://lu.ma/okyl4g9s`;
         <div className="flex gap-4">
           <button
             className="flex items-center px-4 py-2 rounded bg-yellow-500 text-black border border-yellow-600 hover:bg-yellow-600 transition-colors duration-300"
-            onClick={() => createEvent("some random event i guess", 10.00, "0x8c368d8f37d2e717")}
+            onClick={() => handleSubmit()}
           >
             <svg 
               className="w-5 h-5 mr-2" 

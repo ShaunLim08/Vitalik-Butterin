@@ -1,13 +1,10 @@
 'use client'
 import { eventsList } from '@/providers/event-providers';
 import React from 'react';
-import {getEventById, stakeEvent, createEvent} from '../../app/api/eventandstaking/route.js'
 
 const events = eventsList;
 
-const EventSection = ({ filter }) => {
-
-  console.log(filter);
+export const EventSection = ({ filter }) => {
   
   // Function to shuffle array
   const shuffleArray = (array) => {
@@ -65,4 +62,3 @@ const EventSection = ({ filter }) => {
   );
   };
   
-  export default EventSection;
