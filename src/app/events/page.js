@@ -37,14 +37,14 @@ const Page = () => {
 
   const handleExport = async () => {
     const hardcodedText = `I'm going to:
-Monad Madness - Bangkok Pitch Competition
-https://lu.ma/jt1t8gb6
-Arts of the Intersection between AI and Crypto.
-https://lu.ma/1lb39d17
-Perps & Brews by Polynomial
-https://lu.ma/6plq9q3a
-Web3 DevRel Night @ Devcon
-https://lu.ma/okyl4g9s`;
+NFT.NYC: Redefining Digital Ownership
+https://butter-ethglobal.vercel.app/events/7
+Web3 Wallet Security Workshop
+https://butter-ethglobal.vercel.app/events/8
+DAO Builders Meetup
+https://butter-ethglobal.vercel.app/events/9
+Introduction to Zero-Knowledge Proofs
+https://butter-ethglobal.vercel.app/events/10`;
 
     try {
       await navigator.clipboard.writeText(hardcodedText);
