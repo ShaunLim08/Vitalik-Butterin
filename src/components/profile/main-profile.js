@@ -131,8 +131,8 @@ export default function Home({ levels, level, setSharedData }) {
         </div>
         <div className={`${isLargeScreen ? 'flex justify-around' : 'grid grid-cols-3 gap-4'} mb-4`}>
             <motion.div className="text-center" whileHover={{ scale: 1.05 }}>
-                <p className="font-semibold text-black">34</p>
-                <p className="text-sm text-black-600">Articles</p>
+                <p className="font-semibold text-black">12</p>
+                <p className="text-sm text-black-600">Events Joined</p>
             </motion.div>
             <motion.div className="text-center" whileHover={{ scale: 1.05 }}>
                 <p className="font-semibold text-lg">980</p>
